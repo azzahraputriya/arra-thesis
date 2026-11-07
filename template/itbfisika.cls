@@ -115,7 +115,9 @@
 
 \renewcommand*\cftchappresnum{\MakeUppercase{bab}~}
 \renewcommand\chaptername{BAB}
-\settowidth{\cftchapnumwidth}{\cftchappresnum}
+% Fits the widest number (BAB VIII); the original only fitted "BAB", so
+% "BAB III" ran into its title.
+\settowidth{\cftchapnumwidth}{\bfseries BAB~VIII}
 \renewcommand{\cftchapaftersnumb}{\quad}
 \addtocontents{toc}{%
   \protect\renewcommand*\protect\cftchappresnum{\MakeUppercase{\chaptername}~}}
@@ -215,8 +217,7 @@
   \end{center}}
 
 \newcommand\pengesahan{%
-  \newpage
-  \addcontentsline{toc}{chapter}{LEMBAR PENGESAHAN}
+  \itb@halaman{LEMBAR PENGESAHAN}
   \begin{center}
   \begin{doublespace}
   \textbf{\Large \MakeUppercase{pengesahan}}
@@ -264,8 +265,7 @@
   2. \@pengujidua}
 
 \newcommand\pedoman{%
-  \clearpage
-  \addcontentsline{toc}{chapter}{PEDOMAN PENGGUNAAN BUKU TUGAS AKHIR}
+  \itb@halaman{PEDOMAN PENGGUNAAN BUKU TUGAS AKHIR}
   \begin{center}
   \textbf{\Large{PEDOMAN PENGGUNAAN\\BUKU TUGAS AKHIR}}
   \end{center}
