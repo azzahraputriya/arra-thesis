@@ -4,13 +4,16 @@
 Usage:
   python3 scripts/style.py [thesis_dir]           check, offline (CI runs this)
   python3 scripts/style.py --update [thesis_dir]  look up new words on KBBI first
+  python3 scripts/style.py --strict [thesis_dir]  also fail on words not looked up yet
 
 Errors (exit 1):
   - a word KBBI marks as non-standard (D4), with the standard form;
   - a word KBBI doesn't know, outside \\textit{} or \\emph{} (D4, D5);
-  - a word not looked up yet: run `make kbbi`;
   - a decimal point instead of a comma (D3).
-Warnings (exit 0): filler phrases from style/filler.txt (D6).
+Warnings (exit 0):
+  - a word not looked up yet: run `make kbbi`. With --strict this is an
+    error; the final PDF must pass --strict (D7);
+  - filler phrases from style/filler.txt (D6).
 
 KBBI answers are cached in style/kbbi.tsv, so the check itself never goes
 online. Words KBBI lacks but the thesis needs (names, agreed terms) go in
@@ -225,26 +228,27 @@ def lookups(word):
 
 
 def judge(word, cache, allowed):
-    """None if the word is fine, else an error message."""
+    """None if the word is fine, else (kind, message) with kind "error" or "unchecked"."""
     if word in allowed:
         return None
     status, standard = cache.get(word, (None, ""))
     if status == "baku":
         return None
     if status == "tidak-baku":
-        return f"'{word}' is not standard in KBBI; write '{standard}' (D4)"
+        return "error", f"'{word}' is not standard in KBBI; write '{standard}' (D4)"
+    unchecked = "unchecked", f"'{word}' hasn't been checked against KBBI yet; run `make kbbi` (D7)"
     if status is None:
-        return f"'{word}' hasn't been checked against KBBI yet; run `make kbbi` (D4)"
+        return unchecked
     for base in list(lookups(word))[1:]:
         if cache.get(base, (None,))[0] == "baku":
             return None
         if base not in cache:
-            return f"'{word}' hasn't been checked against KBBI yet; run `make kbbi` (D4)"
-    return (f"'{word}' is not in KBBI: fix the spelling, put a foreign term in \\textit{{}} (D5),"
+            return unchecked
+    return "error", (f"'{word}' is not in KBBI: fix the spelling, put a foreign term in \\textit{{}} (D5),"
             " or add it to style/allow.txt")
 
 
-def check(root, cache):
+def check(root, cache, strict=False):
     root = Path(root)
     allowed = set(word_list("allow.txt"))
     fillers = [(p, re.compile(r"\b" + r"\s+".join(map(re.escape, p.split())) + r"\b", re.I))
@@ -259,9 +263,11 @@ def check(root, cache):
                 errors.append((path, line_of(with_math, m.start()),
                                f"decimal point in '{m.group()}': write {m.group().replace('.', ',')} (D3)"))
         for pos, word in words(prose, headings):
-            msg = judge(word, cache, allowed)
-            if msg:
-                errors.append((path, line_of(prose, pos), msg))
+            verdict = judge(word, cache, allowed)
+            if verdict:
+                kind, msg = verdict
+                # Not looked up yet: a warning while KBBI's daily limit slows lookups (D7).
+                (errors if kind == "error" or strict else warnings).append((path, line_of(prose, pos), msg))
         for phrase, pattern in fillers:
             for m in pattern.finditer(prose):
                 warnings.append((path, line_of(prose, m.start()),
@@ -321,12 +327,12 @@ def report(errors, warnings):
 
 
 def main():
-    args = [a for a in sys.argv[1:] if a != "--update"]
+    args = [a for a in sys.argv[1:] if a not in ("--update", "--strict")]
     root = args[0] if args else "thesis"
     cache = load_cache()
     if "--update" in sys.argv:
         update(root, cache)
-    errors, warnings = check(root, cache)
+    errors, warnings = check(root, cache, strict="--strict" in sys.argv)
     report(errors, warnings)
     sys.exit(1 if errors else 0)
 

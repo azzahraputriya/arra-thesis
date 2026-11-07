@@ -15,8 +15,10 @@ lint:
 	python3 -m unittest discover -s scripts -q
 
 # Checks the writing style (research/writing.md) offline, from the KBBI cache.
+# `make style STRICT=1` also fails on words not looked up yet; the final PDF
+# must pass it (D7).
 style:
-	python3 scripts/style.py
+	python3 scripts/style.py $(if $(filter 1,$(STRICT)),--strict)
 
 # Looks up new words on KBBI daring (one per second), then checks the style.
 # Commit the updated style/kbbi.tsv with the text that needed it.

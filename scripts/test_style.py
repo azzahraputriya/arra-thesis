@@ -140,8 +140,17 @@ class CheckTest(unittest.TestCase):
     def test_foreign_term_without_italics(self):
         self.assertError("Contoh shear sitasi.\n", "'shear' is not in KBBI")
 
-    def test_unchecked_word(self):
-        self.assertError("Contoh sitasi baru.\n", "run `make kbbi`")
+    def test_unchecked_word_warns(self):
+        errors, warnings = self.run_check("Contoh sitasi baru.\n")
+        self.assertEqual(errors, [])
+        self.assertTrue(any("run `make kbbi`" in m for _, _, m in warnings))
+
+    def test_unchecked_word_fails_when_strict(self):
+        path = self.root / "thesis/chapters/01-x.tex"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text("Contoh sitasi baru.\n")
+        errors, _ = style.check(self.root / "thesis", CACHE, strict=True)
+        self.assertTrue(any("run `make kbbi`" in m for _, _, m in errors))
 
     def test_clitic_falls_back_to_base(self):
         self.assertEqual(self.errors("Contoh gelombangnya.\n"), [])
@@ -153,7 +162,7 @@ class CheckTest(unittest.TestCase):
         self.assertEqual(self.errors("Contoh sitasi Terzaghi dan Palu.\n"), [])
 
     def test_sentence_start_is_checked(self):
-        self.assertError("Contoh sitasi. Baru dan tanah.\n", "'baru'")
+        self.assertError("Contoh sitasi. Likuifaksi dan tanah.\n", "write 'likuefaksi'")
 
     def test_abbreviation_skipped(self):
         self.assertEqual(self.errors("Contoh SPT dan CPT.\n"), [])

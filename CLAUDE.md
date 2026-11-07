@@ -37,8 +37,11 @@ When an ARS skill produces thesis text, follow these rules over its defaults:
   it to the linter with a test in `scripts/test_lint.py`.
 - Write in the agreed style (`research/writing.md`): decimal comma (`0,5`),
   KBBI standard spelling, and foreign terms in `\textit{}`. Run `make style`
-  to check. When it reports words not checked yet, run `make kbbi`, which
-  looks them up on KBBI daring, and commit the updated `style/kbbi.tsv`. Add
+  to check. It warns about words not checked yet: run `make kbbi`, which
+  looks them up on KBBI daring (about 100 a day without an account; run it
+  again the next day for the rest), and commit the updated `style/kbbi.tsv`.
+  The final defense PDF must pass `make style STRICT=1`, with every word
+  checked. Add
   a word KBBI lacks to `style/allow.txt` only when it is correct as written
   (a unit, a name); never to silence a real spelling error. CI runs
   `make style` as its own check on every PR.
