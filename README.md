@@ -19,8 +19,9 @@ Check it works: run `/ars-plan` and describe the thesis.
 
 | Path | What goes there |
 |---|---|
-| `template/` | University template files, unchanged |
-| `thesis/main.tex` | Template setup and the order of chapters |
+| `template/` | ITB Sarjana Fisika thesis class and logo |
+| `thesis/main.tex` | Title, name, supervisors, and the order of pages |
+| `thesis/front/` | Abstrak, abstract, kata pengantar |
 | `thesis/chapters/` | One `.tex` file per chapter |
 | `thesis/references.bib` | All references |
 | `thesis/figures/` | Images |
