@@ -25,6 +25,7 @@ Check it works: run `/ars-plan` and describe the thesis.
 | `thesis/chapters/` | One `.tex` file per chapter |
 | `thesis/references.bib` | All references |
 | `thesis/figures/` | Images |
+| `research/decisions.md` | Why we chose what we chose: decisions, findings, open questions |
 
 ## Where to start
 

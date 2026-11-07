@@ -32,6 +32,14 @@ When an ARS skill produces thesis text, follow these rules over its defaults:
   can't read it). Use `\includegraphics{name}`, no folder prefix.
 - Run `make` after writing and fix any LaTeX errors before opening the PR.
 
+## Research trail
+
+`research/decisions.md` records why the thesis is shaped the way it is:
+decisions, checked findings, proposals and open questions. When a session
+makes a choice or checks a fact that shapes the thesis, add an entry in the
+same PR. Never rewrite an old entry; add a new one that replaces it. Mark any
+claim that hasn't been checked against a source as **unverified**.
+
 ## How changes land
 
 - Never commit to `main`. Every change goes through a PR. A GitHub ruleset
