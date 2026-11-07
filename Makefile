@@ -6,7 +6,12 @@ pdf:
 	mkdir -p build
 	tectonic -Z search-path=template --outdir build thesis/main.tex
 
+# Checks the CLAUDE.md writing rules, then the checker's own tests.
+lint:
+	python3 scripts/lint.py
+	python3 -m unittest discover -s scripts -q
+
 clean:
 	rm -rf build
 
-.PHONY: pdf clean
+.PHONY: pdf lint clean

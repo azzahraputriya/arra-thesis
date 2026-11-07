@@ -16,6 +16,7 @@ Check it works: run `/ars-plan` and describe the thesis.
 
 1. Install [tectonic](https://tectonic-typesetting.github.io/en-US/install.html).
 2. Run `make`. The PDF is written to `build/main.pdf`.
+3. Run `make lint` to check the writing rules (needs Python 3). CI runs it on every PR.
 
 | Path | What goes there |
 |---|---|
