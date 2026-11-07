@@ -1,7 +1,8 @@
 % itbfisika.cls -- ITB Sarjana Fisika thesis (Buku TA) class.
 %
-% Port of "Template Buku TA versi 1.0" (21 Feb 2022, edited by Laurenzius
-% Yudha Prasetya Tama, FI 2017, based on Cica Gustiani's TF 2007 template).
+% Port of the official "Template Buku TA versi 1.0" from https://fi.itb.ac.id
+% (21 Feb 2022, edited by Laurenzius Yudha Prasetya Tama, FI 2017, based on
+% Cica Gustiani's TF 2007 template).
 % The look matches the original. Changes from it, and why:
 %   - Built for XeTeX (tectonic), not pdfLaTeX. Text font is TeX Gyre Termes
 %     (a Times clone) through fontspec, because the original T1 Times font
