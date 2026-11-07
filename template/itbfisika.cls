@@ -16,6 +16,7 @@
 %   - A4 paper. The original passed `a4`, which is not a real option, so its
 %     PDFs came out US Letter.
 %   - No \nocite{*}: the reference list only shows works actually cited.
+%   - Loads icomma, so decimal commas in math ($1,5$) print without a space.
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{itbfisika}[2026/11/07 ITB Sarjana Fisika Buku TA]
 
@@ -80,6 +81,9 @@
 \RequirePackage{cite}
 \RequirePackage{amssymb}
 \RequirePackage{amsmath}
+% Indonesian decimal comma: $1,5$ prints as 1,5, not 1, 5. A comma followed
+% by a space, as in $(a, b)$, keeps its space.
+\RequirePackage{icomma}
 \RequirePackage{mathrsfs}
 \RequirePackage{dsfont}
 \RequirePackage{relsize}
