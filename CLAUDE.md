@@ -5,8 +5,8 @@ Azzahra Putriya Ahmad's (Arra's) thesis. Research and writing run through the
 
 ## How changes land
 
-- Never commit to `main`. Every change goes through a PR. GitHub can't enforce
-  this on a free private repo, so it's on us.
+- Never commit to `main`. Every change goes through a PR. A GitHub ruleset
+  ("main via PR") blocks direct pushes, force pushes, and deleting `main`.
 - One PR = one piece of thesis progress: a finding, a chapter plan, a
   literature pass, a draft section. Don't mix unrelated progress in one PR.
 - PRs merge by squash only (the repo allows nothing else). The PR title becomes
