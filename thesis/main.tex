@@ -1,33 +1,41 @@
-% Thesis entry point. Only this file knows about the template; chapters
-% hold plain body text, so swapping templates never touches the writing.
-%
-% Placeholder: plain `report` class until the real template lands in
-% template/. Then replace the preamble (everything above \begin{document})
-% and the title page with what the template asks for.
-\documentclass[12pt,a4paper]{report}
+% Thesis entry point: identity, then the page order from the ITB Fisika
+% template. All formatting lives in template/itbfisika.cls.
+\documentclass{itbfisika}
 
-\usepackage[english,indonesian]{babel} % last one listed is the main language
-\usepackage{graphicx}
-\usepackage{booktabs}
-\usepackage[authoryear,round]{natbib}
-\usepackage{hyperref}
+\judul{Judul Tugas Akhir}
+\judulinggris{Thesis Title}
+\penulis{Azzahra Putriya Ahmad}
+\nim{10223085}
+\pembimbing{Nama Pembimbing}{NIP}
+% \pembimbingdua{Nama Pembimbing 2}{NIP} % switches to the 2-supervisor page
+\penguji{Nama Penguji 1}{Nama Penguji 2}
+\katakunci{Kata Kunci 1, Kata Kunci 2, Kata Kunci 3.}
+\keywords{Keyword 1, Keyword 2, Keyword 3.}
 
 \graphicspath{{figures/}}
 
-\title{Judul Tesis}
-\author{Azzahra Putriya Ahmad \\ 10223085}
-\date{\today}
-
 \begin{document}
 
-\maketitle
+\sampul
+\pagenumbering{roman}
+\input{front/abstrak}
+\input{front/abstract}
+\pengesahan
+\pedoman
+\persembahan{Tugas Akhir ini dipersembahkan untuk\\ Tuhan, Bangsa, dan Almamater}
+\input{front/kata-pengantar}
+\daftarisi
+% \input{front/notasi}    % optional: \begin{daftarnotasi} symbol & arti \\ ...
+% \input{front/singkatan} % optional: \begin{daftarsingkatan} ...
+\daftargambar
+\daftartabel
 
-\input{chapters/00-abstract}
-\tableofcontents
+\pagenumbering{arabic}
+\input{chapters/01-pendahuluan}
 
-\input{chapters/01-introduction}
+\daftarpustaka{references}
 
-\bibliographystyle{apalike}
-\bibliography{references}
+% \appendix
+% \input{chapters/lampiran}
 
 \end{document}

@@ -9,17 +9,27 @@ The thesis output is LaTeX, built with `make` (tectonic) into `build/main.pdf`.
 The body is in Bahasa Indonesia, with an English abstract next to the Indonesian one.
 When an ARS skill produces thesis text, follow these rules over its defaults:
 
-- `template/` holds the university template. Never edit it, and never
-  generate your own preamble or document class. Only `thesis/main.tex` sets
-  up the template.
+- `template/itbfisika.cls` is the ITB Sarjana Fisika format. Never edit it
+  while writing, and never generate your own preamble or document class.
+  Change it only in a PR about the format itself.
+- `thesis/main.tex` holds the identity (`\judul`, `\penulis`, `\pembimbing`,
+  ...) and the page order. Fixed pages are commands (`\sampul`,
+  `\pengesahan`, `\daftarisi`, ...). Don't rewrite them by hand.
+- Front matter lives in `thesis/front/`, inside the class's environments:
+  `abstrak`, `abstract` (English), `katapengantar`, `daftarnotasi`,
+  `daftarsingkatan`.
 - Each chapter is one file, `thesis/chapters/NN-name.tex`, starting at
-  `\chapter{...}`. Chapter files hold body text only, with no preamble. Add
-  each new chapter to `thesis/main.tex` with `\input`, not `\include`
-  (tectonic's BibTeX run fails on the extra files `\include` makes).
+  `\chapter{UPPERCASE TITLE}`, e.g. `\chapter{TINJAUAN PUSTAKA}`. Chapter
+  files hold body text only, with no preamble. Add each new chapter to
+  `thesis/main.tex` with `\input`, not `\include` (tectonic's BibTeX run
+  fails on the extra files `\include` makes).
 - References go in `thesis/references.bib` with `AuthorYear` keys. Cite with
-  `\citet` / `\citep`. Use the citation style the template sets. If a
-  template rule conflicts with an ARS default, the template wins.
-- Figures go in `thesis/figures/`. Use `\includegraphics{name}`, no folder prefix.
+  `\cite{key}` or `\cite{a,b}`, which prints [Author, Year]. `\citet` /
+  `\citep` don't exist in this class. The list is APA-like and only shows
+  works that are cited. If a template rule conflicts with an ARS default,
+  the template wins.
+- Figures go in `thesis/figures/` as PDF, PNG or JPG (not EPS: tectonic
+  can't read it). Use `\includegraphics{name}`, no folder prefix.
 - Run `make` after writing and fix any LaTeX errors before opening the PR.
 
 ## How changes land
