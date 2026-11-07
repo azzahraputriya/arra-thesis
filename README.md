@@ -25,3 +25,7 @@ Optional: install Pandoc for DOCX output, and tectonic for PDF output. Markdown 
 | Go from question to finished paper | "I want a complete research paper about ..." |
 
 ARS stops at every stage for your confirmation. You stay the author.
+
+## How changes land
+
+Every change goes through a PR, one per piece of progress (a finding, a chapter plan, a draft section). PRs are squash-merged, so each one becomes a single commit on `main`. Details are in `CLAUDE.md`.
