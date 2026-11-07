@@ -55,4 +55,13 @@ history is the changelog.
 - Titles use conventional commits with the thesis area as scope, e.g.
   `feat(lit-review): map studies on X`, `docs(ch2): plan method chapter`,
   `chore: update ARS plugin`.
-- PR body: what was found or decided, in plain words, then what changed.
+- PR bodies follow `.github/pull_request_template.md` (`gh pr create --body`
+  skips it, so fill it in yourself). Don't leave guidance text in the body:
+  the squash commit copies it into `git log`.
+  - **Found or decided:** what the thesis now knows or has chosen, in plain
+    words. A reader of `git log` should get the progress from this alone.
+  - **Changed:** which chapters, sections or trail files changed, at the
+    level of "drafted Bab II.1–II.3", not a file list.
+  - **Trail:** every `research/` ID touched, one by one, or `Trail: none`.
+  - **AI:** what AI did in this PR, or `none`. This is the record for the
+    thesis's AI-use statement later.
