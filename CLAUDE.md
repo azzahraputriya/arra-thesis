@@ -32,6 +32,18 @@ When an ARS skill produces thesis text, follow these rules over its defaults:
   can't read it). Use `\includegraphics{name}`, no folder prefix.
 - Run `make` after writing and fix any LaTeX errors before opening the PR.
 
+## Research trail
+
+`research/` records why the thesis is shaped the way it is: decisions,
+checked findings, proposals and open questions, one file per topic. Rules
+and the entry format are in `research/README.md`; topics and keywords are in
+`research/glossary.md`. When a session makes a choice or checks a fact that
+shapes the thesis, add an entry in the same PR. Only use glossary terms as
+topics or keywords; a new term goes into the glossary in that PR. Every
+such PR body includes a `Trail:` line naming each ID it touched, one by
+one (format in `research/README.md`). The squash commit keeps it, so git
+history is the changelog.
+
 ## How changes land
 
 - Never commit to `main`. Every change goes through a PR. A GitHub ruleset
