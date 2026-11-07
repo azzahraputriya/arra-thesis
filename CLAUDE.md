@@ -30,7 +30,11 @@ When an ARS skill produces thesis text, follow these rules over its defaults:
   the template wins.
 - Figures go in `thesis/figures/` as PDF, PNG or JPG (not EPS: tectonic
   can't read it). Use `\includegraphics{name}`, no folder prefix.
-- Run `make` after writing and fix any LaTeX errors before opening the PR.
+- Run `make` after writing and fix every problem before opening the PR.
+  `make` runs `scripts/lint.py` first, which checks the rules above, and
+  stops before compiling if any rule is broken. CI runs `make lint` (the
+  check plus its tests) on every PR. When a new writing rule is agreed, add
+  it to the linter with a test in `scripts/test_lint.py`.
 
 ## Research trail
 
