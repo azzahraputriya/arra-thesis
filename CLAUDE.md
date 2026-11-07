@@ -39,7 +39,9 @@ checked findings, proposals and open questions, one file per topic. Rules
 and the entry format are in `research/README.md`; topics and keywords are in
 `research/glossary.md`. When a session makes a choice or checks a fact that
 shapes the thesis, add an entry in the same PR. Only use glossary terms as
-topics or keywords; a new term goes into the glossary in that PR.
+topics or keywords; a new term goes into the glossary in that PR. Every
+such PR also adds one entry to `research/CHANGELOG.md` linking the IDs it
+added or changed.
 
 ## How changes land
 

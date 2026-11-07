@@ -35,6 +35,11 @@ entry wherever it lives. To get the next number, find the highest one in use
   `thesis/references.bib`, or the label **unverified** until someone checks it.
 - To add a topic or keyword, add it to the glossary in the same PR. The PR
   review is where it gets agreed.
+- Every PR that touches this folder adds one entry at the top of
+  [CHANGELOG.md](CHANGELOG.md): the date, the PR number, a short summary of
+  what changed in the thinking, and links to every ID it added or changed
+  (for example "D2 → decided"). Link to the ID's heading, not just the file.
+  Don't copy diffs or authors there; git already has them.
 
 ## Entry format
 
