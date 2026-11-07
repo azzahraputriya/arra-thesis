@@ -1,8 +1,11 @@
-# `make` builds build/main.pdf. Tectonic fetches missing LaTeX packages on its
-# own, so the only thing to install is tectonic itself.
+# `make` checks the writing rules, then builds build/main.pdf. The check runs
+# first so a change that skipped the PR still can't compile while it breaks a
+# rule. Tectonic fetches missing LaTeX packages on its own, so the only things
+# to install are tectonic and Python 3.
 # shortcut: BibTeX only. If the template uses biblatex+biber, tectonic calls a
 # `biber` from PATH, which must match the biblatex version in tectonic's bundle.
 pdf:
+	python3 scripts/lint.py
 	mkdir -p build
 	tectonic -Z search-path=template --outdir build thesis/main.tex
 
