@@ -34,11 +34,12 @@ When an ARS skill produces thesis text, follow these rules over its defaults:
 
 ## Research trail
 
-`research/decisions.md` records why the thesis is shaped the way it is:
-decisions, checked findings, proposals and open questions. When a session
-makes a choice or checks a fact that shapes the thesis, add an entry in the
-same PR. Never rewrite an old entry; add a new one that replaces it. Mark any
-claim that hasn't been checked against a source as **unverified**.
+`research/` records why the thesis is shaped the way it is: decisions,
+checked findings, proposals and open questions, one file per topic. Rules
+and the entry format are in `research/README.md`; topics and keywords are in
+`research/glossary.md`. When a session makes a choice or checks a fact that
+shapes the thesis, add an entry in the same PR. Only use glossary terms as
+topics or keywords; a new term goes into the glossary in that PR.
 
 ## How changes land
 
