@@ -1,0 +1,33 @@
+% Thesis entry point. Only this file knows about the template; chapters
+% hold plain body text, so swapping templates never touches the writing.
+%
+% Placeholder: plain `report` class until the real template lands in
+% template/. Then replace the preamble (everything above \begin{document})
+% and the title page with what the template asks for.
+\documentclass[12pt,a4paper]{report}
+
+\usepackage[english,indonesian]{babel} % last one listed is the main language
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[authoryear,round]{natbib}
+\usepackage{hyperref}
+
+\graphicspath{{figures/}}
+
+\title{Judul Tesis}
+\author{Azzahra Putriya Ahmad \\ 10223085}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\input{chapters/00-abstract}
+\tableofcontents
+
+\input{chapters/01-introduction}
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}

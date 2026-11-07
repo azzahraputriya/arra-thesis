@@ -12,7 +12,18 @@ This repo uses [Academic Research Skills](https://github.com/Imbad0202/academic-
 
 Check it works: run `/ars-plan` and describe the thesis.
 
-Optional: install Pandoc for DOCX output, and tectonic for PDF output. Markdown output needs neither.
+## Building the PDF
+
+1. Install [tectonic](https://tectonic-typesetting.github.io/en-US/install.html).
+2. Run `make`. The PDF is written to `build/main.pdf`.
+
+| Path | What goes there |
+|---|---|
+| `template/` | University template files, unchanged |
+| `thesis/main.tex` | Template setup and the order of chapters |
+| `thesis/chapters/` | One `.tex` file per chapter |
+| `thesis/references.bib` | All references |
+| `thesis/figures/` | Images |
 
 ## Where to start
 
