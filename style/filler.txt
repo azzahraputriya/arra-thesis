@@ -1,0 +1,12 @@
+# Filler phrases the style check warns about (D6). One per line, case
+# doesn't matter. These are warnings: keep a phrase when it earns its place.
+hal ini menunjukkan bahwa
+dapat dilihat bahwa
+perlu diketahui bahwa
+perlu diperhatikan bahwa
+seperti yang kita ketahui
+sebagaimana yang telah diketahui
+dapat disimpulkan bahwa
+pada dasarnya
+dalam hal ini
+yang mana

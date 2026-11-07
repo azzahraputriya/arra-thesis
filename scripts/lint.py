@@ -4,8 +4,8 @@
 Usage: python3 scripts/lint.py [thesis_dir]   (default: thesis)
 Prints one `path:line: message` per problem and exits 1 if there are any.
 
-Only rules CLAUDE.md already sets live here. Style rules (decimal comma,
-term spelling, italics) wait until they are agreed in research/.
+Only rules CLAUDE.md already sets live here. The writing style (decimal
+comma, KBBI spelling, italics) is checked by style.py.
 """
 import os
 import re

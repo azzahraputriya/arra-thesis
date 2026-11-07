@@ -17,6 +17,7 @@ Check it works: run `/ars-plan` and describe the thesis.
 1. Install Python 3 and [tectonic](https://tectonic-typesetting.github.io/en-US/install.html).
 2. Run `make`. The PDF is written to `build/main.pdf`.
    `make` checks the writing rules first and stops if one is broken. CI runs the same check on every PR.
+3. Run `make style` to check spelling against KBBI, decimal commas and italics. If it lists words not checked yet, run `make kbbi` (needs internet) and commit `style/kbbi.tsv`.
 
 | Path | What goes there |
 |---|---|
