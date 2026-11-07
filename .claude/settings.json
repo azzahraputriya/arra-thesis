@@ -1,0 +1,8 @@
+{
+	"claudeMdExcludes": [
+		"**/arra/CLAUDE.md",
+		"**/arra/AGENTS.md",
+		"**/arra/!(skripsi)/**/CLAUDE.md",
+		"**/arra/!(skripsi)/**/AGENTS.md"
+	]
+}
