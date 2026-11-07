@@ -1,8 +1,19 @@
 {
-	"claudeMdExcludes": [
-		"**/arra/CLAUDE.md",
-		"**/arra/AGENTS.md",
-		"**/arra/!(arra-thesis)/**/CLAUDE.md",
-		"**/arra/!(arra-thesis)/**/AGENTS.md"
-	]
+  "enabledPlugins": {
+    "academic-research-skills@academic-research-skills": true
+  },
+  "extraKnownMarketplaces": {
+    "academic-research-skills": {
+      "source": {
+        "source": "github",
+        "repo": "Imbad0202/academic-research-skills"
+      }
+    }
+  },
+  "claudeMdExcludes": [
+    "**/arra/CLAUDE.md",
+    "**/arra/AGENTS.md",
+    "**/arra/!(arra-thesis)/**/CLAUDE.md",
+    "**/arra/!(arra-thesis)/**/AGENTS.md"
+  ]
 }
