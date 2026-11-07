@@ -14,7 +14,16 @@ lint:
 	python3 scripts/lint.py
 	python3 -m unittest discover -s scripts -q
 
+# Checks the writing style (research/writing.md) offline, from the KBBI cache.
+style:
+	python3 scripts/style.py
+
+# Looks up new words on KBBI daring (one per second), then checks the style.
+# Commit the updated style/kbbi.tsv with the text that needed it.
+kbbi:
+	python3 scripts/style.py --update
+
 clean:
 	rm -rf build
 
-.PHONY: pdf lint clean
+.PHONY: pdf lint style kbbi clean

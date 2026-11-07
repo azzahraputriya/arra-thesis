@@ -1,0 +1,9 @@
+# Words the style check accepts although KBBI doesn't list them.
+# One word per line, lowercase, with a reason. Add a word only when it is
+# correct as written: a unit, a name at the start of a sentence, or an
+# agreed term (record agreed terms in research/glossary.md too).
+cm      # unit
+mm      # unit
+kg      # unit
+km      # unit
+ms      # unit: millisecond
