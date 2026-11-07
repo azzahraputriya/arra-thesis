@@ -2,7 +2,7 @@
 	"claudeMdExcludes": [
 		"**/arra/CLAUDE.md",
 		"**/arra/AGENTS.md",
-		"**/arra/!(skripsi)/**/CLAUDE.md",
-		"**/arra/!(skripsi)/**/AGENTS.md"
+		"**/arra/!(arra-thesis)/**/CLAUDE.md",
+		"**/arra/!(arra-thesis)/**/AGENTS.md"
 	]
 }
