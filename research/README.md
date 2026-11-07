@@ -35,11 +35,17 @@ entry wherever it lives. To get the next number, find the highest one in use
   `thesis/references.bib`, or the label **unverified** until someone checks it.
 - To add a topic or keyword, add it to the glossary in the same PR. The PR
   review is where it gets agreed.
-- Every PR that touches this folder adds one entry at the top of
-  [CHANGELOG.md](CHANGELOG.md): the date, the PR number, a short summary of
-  what changed in the thinking, and links to every ID it added or changed
-  (for example "D2 → decided"). Link to the ID's heading, not just the file.
-  Don't copy diffs or authors there; git already has them.
+- The git history is the changelog. PRs are squash-merged, and the squash
+  commit carries the PR body, so `git log -- research/` lists every change
+  to this folder with its summary. Every PR that touches this folder puts
+  a line in its body that names each ID it touched, one by one (no ranges
+  like F1–F8, so a search for one ID finds it):
+
+  ```
+  Trail: added D3, F9 · changed D2 → decided · answered Q3
+  ```
+
+  `git log --grep 'D2'` then shows every PR that touched D2.
 
 ## Entry format
 
