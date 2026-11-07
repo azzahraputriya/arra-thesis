@@ -21,7 +21,7 @@ How the thesis text is written: spelling, numbers, italics and style. The
 
 ### D4 · Spell every word as KBBI's standard (baku) form
 
-- **Date:** 2026-11-07 · **Status:** decided
+- **Date:** 2026-11-07 · **Status:** decided, amended by D7
 - **Keywords:** KBBI
 - **What:** Every Indonesian word must be in KBBI in its standard form. The
   `style` check looks each new word up in KBBI daring and keeps the answer
@@ -52,6 +52,22 @@ How the thesis text is written: spelling, numbers, italics and style. The
 - **Why:** Whether a phrase is filler depends on the sentence, so it's a
   judgment call, not a rule.
 
+### D7 · Words not looked up in KBBI yet are warnings for now
+
+- **Date:** 2026-11-07 · **Status:** provisional, until Q7 is resolved
+- **Keywords:** KBBI
+- **What:** Amends D4. A word that is not in the KBBI cache yet is a
+  warning, not an error. Words KBBI marks as non-standard or doesn't know
+  still fail. The final defense PDF must pass `make style STRICT=1`, which
+  turns the warnings back into errors.
+- **Why:** KBBI daring allows only about 100 lookups a day without an
+  account (F11), so a new chapter can take days to look up. Registering an
+  account is stuck (Q7).
+- **Considered:** Using an offline copy or kbbi.web.id instead. Rejected:
+  both hold KBBI edition III from 2008 (F12).
+- **Revisit if:** Arra gets a KBBI account. Then add login to `make kbbi`
+  and make these words errors again.
+
 ## Findings
 
 ### F9 · KBBI on words from the earlier theses
@@ -77,3 +93,36 @@ How the thesis text is written: spelling, numbers, italics and style. The
 - Without it, LaTeX prints `$v = 1,5$` as "1, 5". With `\usepackage{icomma}`
   it prints "1,5", while `$(a, b)$` keeps its space. Tested with tectonic on
   2026-11-07. The class doesn't load icomma yet.
+
+### F11 · KBBI daring's daily limit without an account
+
+- **Keywords:** KBBI
+- After about 100 lookups in one day from an anonymous session, KBBI
+  redirects every lookup to `/Beranda/BatasSehari`: "Pencarian Anda telah
+  mencapai batas maksimum yang diberikan bagi pengguna tidak terdaftar
+  dalam sehari." Lookups work again the next day. A registered account
+  lifts or raises the limit; by how much isn't known yet.
+- **Source:** kbbi.kemendikdasmen.go.id, tested 2026-11-07.
+
+### F12 · The offline KBBI and kbbi.web.id hold edition III
+
+- **Keywords:** KBBI
+- `kbbi-offline` (code.google.com/archive/p/kbbi-offline) says in its own
+  About box that its data comes from "KBBI Daring (edisi III)" and that the
+  data is Pusat Bahasa's copyright. The data is in a compressed Windows
+  format.
+- kbbi.web.id says its main database "masih mengacu pada KBBI Daring Edisi
+  III", and adds unofficial entries marked "Definisi Eksternal".
+- Neither has *likuefaksi*. kbbi.web.id returns "tidak ditemukan" for
+  *analisa*, *frekwensi* and *berperilaku* alike, so it can't tell a
+  non-standard form from a typo or from a derived word.
+- **Source:** both sites, checked 2026-11-07.
+
+## Open questions
+
+### Q7 · KBBI account for Arra
+
+- **Keywords:** KBBI
+- Registration at kbbi.kemendikdasmen.go.id/Account/Register never sent the
+  confirmation email. To try: spam folders, logging in anyway, "Lupa kata
+  sandi", another email address, or writing to adminkbbi@kemdikbud.go.id.
